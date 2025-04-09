@@ -27,6 +27,8 @@ public class StudentDetails {
         System.out.println("Student Division "+ studentDivision);
     }
 
-    
+    public String getRollNo(){
+        return studentRollNo;
+    }
 
 }

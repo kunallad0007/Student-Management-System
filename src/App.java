@@ -35,10 +35,31 @@ public class App {
                     break;
 
                 case 3:
-                    System.out.println("👥 Student Record!");
-                    for(StudentDetails student : studentList){
-                        student.;
-                        System.out.println("-----------------------------");
+                    System.out.println("👥 * Student Record *");
+                    System.out.println("Press 1 for Specific Student");
+                    System.out.print("Press 2 for All Records");
+                    int choice = newInput.nextInt();
+                    if(choice == 1){
+                        System.out.print("Enter Roll Number of the Student: ");
+                        newInput.nextLine();
+                        String searchRoll = newInput.nextLine();
+                        for(StudentDetails student : studentList){
+                            if(student.getRollNo().equals(searchRoll)){
+                                System.out.println("Student Found!");
+                                student.displayStudentDetails();
+                                break;
+                            }else{
+                                System.out.println("Student with Roll Number " + searchRoll + " not found!");
+                            }
+                            
+                        }
+                    }else if(choice == 2){
+                        for(StudentDetails student : studentList){
+                            student.displayStudentDetails();
+                            System.out.println("-----------------------------");
+                        }
+                    }else{
+                        System.out.println("Enter Invalid Key!");
                     }
                     break;
                 
