@@ -37,7 +37,8 @@ public class App {
                 case 3:
                     System.out.println("👥 * Student Record *");
                     System.out.println("Press 1 for Specific Student");
-                    System.out.print("Press 2 for All Records");
+                    System.out.println("Press 2 for All Records");
+                    System.out.print("Enter your choice: ");
                     int choice = newInput.nextInt();
                     if(choice == 1){
                         System.out.print("Enter Roll Number of the Student: ");
