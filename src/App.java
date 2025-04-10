@@ -1,11 +1,10 @@
 import Student.StudentDetails;
-import Student.Register;
-
+import services.Register;
 import java.util.ArrayList;
-import java.util.Scanner;
+import utility.InputUility;;
 public class App {
     public static void main(String[] args) {
-        Scanner newInput = new Scanner(System.in);
+        InputUility newInput = new InputUility();
         
         ArrayList<StudentDetails> studentList = new ArrayList<>();
 
@@ -20,7 +19,7 @@ public class App {
             System.out.println("* Press 3 to Show Student Details *");
             System.out.println("* Press 4 to Exit                 *");
             System.out.print("Enter your choice: ");
-            n = newInput.nextInt();
+            n = newInput.input.nextInt();
 
             switch (n) {
                 case 1:
@@ -39,11 +38,11 @@ public class App {
                     System.out.println("Press 1 for Specific Student");
                     System.out.println("Press 2 for All Records");
                     System.out.print("Enter your choice: ");
-                    int choice = newInput.nextInt();
+                    int choice = newInput.input.nextInt();
                     if(choice == 1){
                         System.out.print("Enter Roll Number of the Student: ");
-                        newInput.nextLine();
-                        String searchRoll = newInput.nextLine();
+                        newInput.input.nextLine();
+                        String searchRoll = newInput.input.nextLine();
                         for(StudentDetails student : studentList){
                             if(student.getRollNo().equals(searchRoll)){
                                 System.out.println("Student Found!");
@@ -74,7 +73,7 @@ public class App {
             }
         }while(n != 4);
 
-        newInput.close();
+        newInput.input.close();
 
     }
 }

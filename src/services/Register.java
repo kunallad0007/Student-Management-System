@@ -1,40 +1,41 @@
-package Student;
-import java.util.Scanner;
+package services;
+import Student.StudentDetails;
+import utility.InputUility;
 
 public class Register{
 
     
-    Scanner input = new Scanner(System.in);
+    InputUility newinput = new InputUility();
     
     public StudentDetails getStudentDetails(){
         
         StudentDetails newStudent = new StudentDetails();
 
         System.out.print("Enter your name: ");
-        String studentName = input.nextLine();
+        String studentName = newinput.input.nextLine();
 
         System.out.print("Enter your age: ");
-        int studentAge = input.nextInt();
-        input.nextLine();
+        int studentAge = newinput.input.nextInt();
+        newinput.input.nextLine();
 
         System.out.println("Enter your DOB(DD-MM-YYYY): ");
-        String studentDOB = input.nextLine();
+        String studentDOB = newinput.input.nextLine();
 
         System.out.print("Enter your address: ");
-        String studentAddress = input.nextLine();
+        String studentAddress = newinput.input.nextLine();
 
         System.out.print("Enter your roll number: ");
-        String studentRollNo = input.nextLine();
+        String studentRollNo = newinput.input.nextLine();
 
         System.out.print("Enter your class: ");
-        String studentStd = input.nextLine();
+        String studentStd = newinput.input.nextLine();
 
         System.out.print("Enter your Division: ");
-        char studentDivision = input.next().charAt(0);
-        input.nextLine();
+        char studentDivision = newinput.input.next().charAt(0);
+        newinput.input.nextLine();
 
         System.out.println("Enter 8 Digit Password: ");
-        String password = input.nextLine();
+        String password = newinput.input.nextLine();
 
         newStudent.setStudentDetails(studentName, studentAge, studentDOB, studentAddress, studentRollNo, studentStd, studentDivision, password);
 
