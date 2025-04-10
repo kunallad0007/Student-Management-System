@@ -57,7 +57,7 @@ public class App {
                             found = true;
                             
                         }if(!found){
-                            System.out.println("Student with Roll Number " + searchRoll + " not found!");
+                            System.err.println(RED+"Student with Roll Number " + searchRoll + " not found!"+RESET);
                         }
                     }else if(choice == 2){
                         for(StudentDetails student : studentList){
@@ -67,7 +67,7 @@ public class App {
                             System.out.println();
                         }
                     }else{
-                        System.out.println("Enter Invalid Key!");
+                        System.err.println(RED+"Enter Invalid Key!"+RESET);
                         System.out.println();
                     }
                     System.out.println();
@@ -79,7 +79,7 @@ public class App {
                     break;
             
                 default:
-                    System.out.println("Invalid Key Pressed.... Try Again !");
+                    System.err.println(RED+"Invalid Key Pressed.... Try Again !"+RESET);
                     System.out.println();
                     break;
             }
