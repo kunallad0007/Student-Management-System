@@ -36,8 +36,8 @@ public class StudentDetails {
         return studentRollNo;
     }
 
-    public String getPassword(){
-        return password;
+    public boolean matchPassword(String inputPassword){
+        return password.equals(inputPassword);
     }
 
 }

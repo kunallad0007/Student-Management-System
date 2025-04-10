@@ -30,7 +30,7 @@ public class App {
                     Register newRegisteration = new Register();
                     StudentDetails newStudent = newRegisteration.getStudentDetails();
                     studentList.add(newStudent);
-                    System.out.println("Student Regostered Successfully!");
+                    //System.out.println("Student Regostered Successfully!");
                     break;
 
                 case 3:
@@ -43,15 +43,17 @@ public class App {
                         System.out.print("Enter Roll Number of the Student: ");
                         newInput.input.nextLine();
                         String searchRoll = newInput.input.nextLine();
+                        boolean found = true;
                         for(StudentDetails student : studentList){
                             if(student.getRollNo().equals(searchRoll)){
                                 System.out.println("Student Found!");
                                 student.displayStudentDetails();
                                 break;
-                            }else{
-                                System.out.println("Student with Roll Number " + searchRoll + " not found!");
                             }
+                            found = true;
                             
+                        }if(!found){
+                            System.out.println("Student with Roll Number " + searchRoll + " not found!");
                         }
                     }else if(choice == 2){
                         for(StudentDetails student : studentList){
