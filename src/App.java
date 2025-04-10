@@ -1,7 +1,7 @@
 import Student.StudentDetails;
 import services.Register;
 import java.util.ArrayList;
-import utility.InputUility;;
+import utility.InputUility;
 public class App {
     public static void main(String[] args) {
         InputUility newInput = new InputUility();
@@ -9,6 +9,8 @@ public class App {
         ArrayList<StudentDetails> studentList = new ArrayList<>();
 
         int n;
+        final String RED = "\u001B[31m";
+        final String RESET = "\u001B[0m";
 
         do{
             System.out.println("=========Welcome to Student Portal=========");
@@ -23,7 +25,30 @@ public class App {
 
             switch (n) {
                 case 1:
-                    System.out.println("Login");
+                    while(true){
+                        System.out.print("Enter your roll number: ");
+                        newInput.input.nextLine();
+                        String rollNumber = newInput.input.nextLine();
+                        System.out.print("Enter your password: ");
+                        newInput.input.nextLine();
+                        String password = newInput.input.nextLine();
+
+                        boolean authentication = false;
+
+                        for(StudentDetails student : studentList){
+                            if(student.matchRollNumber(rollNumber) && student.matchPassword(password)){
+                                System.out.println("Login Successfull !");
+                                authentication = true;
+                                break;
+                            }
+                        }
+                        if(authentication){
+                            break;
+                        }else{
+                            System.err.println(RED+"Incorrect Roll Number and Password"+RESET);
+                            System.err.println(RED+"Try Again...."+RESET);
+                        }
+                    }
                     break;
 
                 case 2:
@@ -38,6 +63,7 @@ public class App {
                     System.out.println("Press 1 for Specific Student");
                     System.out.println("Press 2 for All Records");
                     System.out.print("Enter your choice: ");
+                    System.out.println();
                     int choice = newInput.input.nextInt();
                     if(choice == 1){
                         System.out.print("Enter Roll Number of the Student: ");
@@ -58,19 +84,25 @@ public class App {
                     }else if(choice == 2){
                         for(StudentDetails student : studentList){
                             student.displayStudentDetails();
+                            System.out.println();
                             System.out.println("-----------------------------");
+                            System.out.println();
                         }
                     }else{
                         System.out.println("Enter Invalid Key!");
+                        System.out.println();
                     }
+                    System.out.println();
                     break;
                 
                 case 4:
                     System.out.println("Portal closed!");
+                    System.out.println();
                     break;
             
                 default:
                     System.out.println("Invalid Key Pressed.... Try Again !");
+                    System.out.println();
                     break;
             }
         }while(n != 4);

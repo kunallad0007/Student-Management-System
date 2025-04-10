@@ -40,4 +40,8 @@ public class StudentDetails {
         return password.equals(inputPassword);
     }
 
+    public boolean matchRollNumber(String rollNumber){
+        return this.studentRollNo.equals(rollNumber);
+    }
+
 }
