@@ -2,10 +2,10 @@ import Student.StudentDetails;
 import services.Register;
 import java.util.ArrayList;
 import utility.InputUility;
+import services.Login;
 public class App {
     public static void main(String[] args) {
         InputUility newInput = new InputUility();
-        
         ArrayList<StudentDetails> studentList = new ArrayList<>();
 
         int n;
@@ -25,30 +25,8 @@ public class App {
 
             switch (n) {
                 case 1:
-                    while(true){
-                        System.out.print("Enter your roll number: ");
-                        newInput.input.nextLine();
-                        String rollNumber = newInput.input.nextLine();
-                        System.out.print("Enter your password: ");
-                        newInput.input.nextLine();
-                        String password = newInput.input.nextLine();
-
-                        boolean authentication = false;
-
-                        for(StudentDetails student : studentList){
-                            if(student.matchRollNumber(rollNumber) && student.matchPassword(password)){
-                                System.out.println("Login Successfull !");
-                                authentication = true;
-                                break;
-                            }
-                        }
-                        if(authentication){
-                            break;
-                        }else{
-                            System.err.println(RED+"Incorrect Roll Number and Password"+RESET);
-                            System.err.println(RED+"Try Again...."+RESET);
-                        }
-                    }
+                    Login studentLogin = new Login();
+                    studentLogin.studentLogin(studentList);
                     break;
 
                 case 2:

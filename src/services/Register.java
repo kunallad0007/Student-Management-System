@@ -27,7 +27,6 @@ public class Register{
         System.out.print("Enter your address: ");
         String studentAddress = newinput.input.nextLine();
 
-        System.out.print("Enter 4 digit roll number: ");
         String studentRollNo;
         while(true){
             System.out.print("Enter 4 digit roll number: ");
