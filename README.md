@@ -68,15 +68,6 @@ git push origin feature/YourFeatureName
 
 ---
 
-### 6. **License**
-
-Specify the license under which the project is distributed:
-
-```markdown
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
 ## Acknowledgments
 
 - [Oracle Java Documentation](https://docs.oracle.com/en/java/)
