@@ -11,62 +11,48 @@ public class Login {
 
     InputUility newInput = new InputUility();
 
-    public void studentLogin(ArrayList<StudentDetails> studentList){
+    public void login(ArrayList<?> userList, String userType){
 
-        int Attempt = 3;
+        final int MAX_ATTEMPTS = 3;
+        int Attempt = MAX_ATTEMPTS;
+        boolean authentication = false;
 
-        while(Attempt != 0) {
-            System.out.print("Enter your roll number: ");
-            String rollNumber = newInput.input.nextLine();
+        if(userList == null || userList.isEmpty()){
+            System.err.println(RED+"No "+userType+"s found"+RESET);
+        }
+
+        while(authentication == false && Attempt > 0) {
+            System.out.print("Enter your "+ (userType.equals("Student") ? "Roll Number" : "ID") + ": ");
+            String id = newInput.input.nextLine();
             System.out.print("Enter your password: ");
             String password = newInput.input.nextLine();
 
-            boolean authentication = false;
+            if(id.isEmpty() || password.isEmpty()){
+                System.err.println(RED+"Please enter valid "+ (userType.equals("Student") ? "Roll Number" : "ID"+ " and password cannot be empty" +RESET));
+            }
 
-            for(StudentDetails student : studentList){
-                if(student.matchRollNumber(rollNumber) && student.matchPassword(password)){
+            for(Object user : userList){
+                if((userType.equals("Student") && ((StudentDetails) user).matchRollNumber(id) && ((StudentDetails) user).matchPassword(password)) || (userType.equals("Admin") && ((AdminDetails) user).matchID(id) && ((AdminDetails) user).matchPassword(password))){
                     System.out.println("Login Successfull !");
                     authentication = true;
                     break;
                 }
             }
-            if(authentication){
-                break;
-            }else{
+            if(!authentication){
                 Attempt--;
                 System.err.println(RED+"Incorrect Roll Number and Password"+RESET);
                 System.err.println(RED+"Try Again.... Attempt left: "+ Attempt +RESET);
             }
         }
+    }
+
+    public void studentLogin(ArrayList<StudentDetails> StudentList){
+        login(StudentList, "Student");
     }
 
     public void adminLogin(ArrayList<AdminDetails> adminList){
-
-        int Attempt = 3;
-
-        while(Attempt != 0) {
-            System.out.print("Enter your roll number: ");
-            String rollNumber = newInput.input.nextLine();
-            System.out.print("Enter your password: ");
-            String password = newInput.input.nextLine();
-
-            boolean authentication = false;
-
-            for(AdminDetails admin : adminList){
-                if(admin.matchRollNumber(rollNumber) && admin.matchPassword(password)){
-                    System.out.println("Login Successfull !");
-                    authentication = true;
-                    break;
-                }
-            }
-            if(authentication){
-                break;
-            }else{
-                Attempt--;
-                System.err.println(RED+"Incorrect Roll Number and Password"+RESET);
-                System.err.println(RED+"Try Again.... Attempt left: "+ Attempt +RESET);
-            }
-        }
+        login(adminList, "Admin");
     }
+
 }   
 

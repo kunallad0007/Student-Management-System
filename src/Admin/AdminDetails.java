@@ -17,7 +17,7 @@ public class AdminDetails {
         this.adminPassword = adminPassword;
     }
 
-    public void displayStudentDetails(){
+    public void displayAdminDetails(){
         System.out.println("Admin Name: "+ adminName);
         System.out.println("Admin Age: "+ adminAge);
         System.out.println("Admin DOB: "+ DOB);
@@ -29,10 +29,10 @@ public class AdminDetails {
     }
 
     public boolean matchPassword(String inputPassword){
-        return adminPassword.equals(inputPassword);
+        return this.adminPassword.equals(inputPassword);
     }
 
-    public boolean matchRollNumber(String rollNumber){
-        return adminID.equals(rollNumber);
+    public boolean matchID(String adminID){
+        return this.adminID.equals(adminID);
     }
 }
