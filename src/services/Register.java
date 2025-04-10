@@ -1,4 +1,5 @@
 package services;
+import Admin.AdminDetails;
 import Student.StudentDetails;
 import utility.InputUility;
 
@@ -59,6 +60,51 @@ public class Register{
         newStudent.setStudentDetails(studentName, studentAge, studentDOB, studentAddress, studentRollNo, studentStd, studentDivision, password);
 
         return newStudent;
+        
+    }
+
+    public AdminDetails getadminDetails(){
+        
+        AdminDetails newAdmin = new AdminDetails();
+
+        System.out.print("Enter your name: ");
+        String adminName = newinput.input.nextLine();
+
+        System.out.print("Enter your age: ");
+        int adminAge = newinput.input.nextInt();
+        newinput.input.nextLine();
+
+        System.out.print("Enter your DOB(DD-MM-YYYY): ");
+        String adminDOB = newinput.input.nextLine();
+
+        System.out.print("Enter your address: ");
+        String adminAddress = newinput.input.nextLine();
+
+        String adminID;
+        while(true){
+            System.out.print("Enter 4 digit roll number: ");
+            adminID = newinput.input.nextLine();
+            if (adminID.length() == 4) {
+                break;
+            } else {
+                System.err.println(RED+"*** Roll Number must be exactly 4 digits ***"+RESET);
+            }
+        }
+
+        System.out.println("Enter 8 Digit Password: ");
+        String adminPassword;
+        while(true){
+            adminPassword = newinput.input.nextLine();
+            if(adminPassword.length() == 8){
+                break;
+            }else{
+                System.err.print(RED+"*** Password must be exactly 8 digits ***"+RESET);
+            }
+        }
+
+        newAdmin.setStudentDetails(adminName, adminAge, adminDOB, adminAddress, adminID, adminPassword);
+
+        return newAdmin;
         
     }
 
